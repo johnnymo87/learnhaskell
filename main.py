@@ -1,6 +1,6 @@
 import csv
 
-def last_of(lst):
+def parse_last_element(lst):
     return int(lst[-1])
 
 def get_rows_from_csv(filename):
@@ -8,11 +8,11 @@ def get_rows_from_csv(filename):
         return list(csv.reader(csvfile))
 
 
-def get_at_bat_sum(filename):
+def get_at_bats_sum(filename):
     list_of_rows = get_rows_from_csv(filename)
-    return sum(map(last_of, list_of_rows))
+    return sum(map(parse_last_element, list_of_rows))
 
 if __name__ == '__main__':
     filename = 'batting.csv'
-    summed = get_at_bat_sum(filename)
+    summed = get_at_bats_sum(filename)
     print 'Total at bats was: ' + str(summed)
