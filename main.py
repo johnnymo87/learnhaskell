@@ -3,15 +3,16 @@ import csv
 def last_of(lst):
     return int(lst[-1])
 
-def get_at_bat_sum(filename):
+def get_rows_from_csv(filename):
     with open(filename) as csvfile:
-        list_of_lists = list(csv.reader(csvfile))
-    return sum(map(last_of, list_of_lists))
+        return list(csv.reader(csvfile))
 
-def run(filename):
-    summed = get_at_bat_sum(filename)
-    print 'Total at bats was: ' + str(summed)
+
+def get_at_bat_sum(filename):
+    list_of_rows = get_rows_from_csv(filename)
+    return sum(map(last_of, list_of_rows))
 
 if __name__ == '__main__':
     filename = 'batting.csv'
-    run(filename)
+    summed = get_at_bat_sum(filename)
+    print 'Total at bats was: ' + str(summed)
